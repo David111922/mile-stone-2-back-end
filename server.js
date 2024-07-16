@@ -1,7 +1,7 @@
 // index.js
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+import App from './src/App';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const env = process.env.NODE_ENV || 'development';
@@ -11,4 +11,3 @@ const db = {};
 
 
 ReactDOM.render(<App />, document.getElementById('root'));
-
