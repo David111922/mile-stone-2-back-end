@@ -2,7 +2,7 @@
 const { Model } = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
-  class Tireshop extends Model {
+  class Tire extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -12,8 +12,8 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
     }
   }
-  
-  TireShop.init({
+
+  Tire.init({
 
     tire_id: {
         type: DataTypes.INTEGER,
@@ -24,25 +24,26 @@ module.exports = (sequelize, DataTypes) => {
     brand_name: {
         type: DataTypes.STRING,
         allowNull: false,
-
     },
 
     price: {
         type: DataTypes.INTEGER,
         allowNull: false,
-
     },
 
     size: {
         type: DataTypes.STRING,
         allowNull: false,
-
     },
 
     tread_pattern: {
         type: DataTypes.STRING,
         allowNull: false,
-    }
+    },
+    image: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
 }, {
     sequelize,
     modelName: 'TireShop',
