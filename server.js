@@ -20,7 +20,11 @@ app.get('/', (req, res) => {
   })
 })
 
-
 // Tire CONTROLLERS
-const tireController = require('./controllers/bands_controller')
-app.use('/bands', bandsController)
+// const tireController = require('./controllers/bands_controller')
+// app.use('/bands', bandsController)
+
+// LISTEN
+app.listen(process.env.PORT, () => {
+  console.log(`🎣 Fishing' on port: ${process.env.PORT}`)
+})
