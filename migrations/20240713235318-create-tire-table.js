@@ -25,18 +25,10 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
-
-      // not sure if I need the created and update
-      createdAt: {
-        type: Sequelize.DATE,
+      image: {
+        type: Sequelize.STRING,
         allowNull: false,
-        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
       },
-      updatedAt: {
-        type: Sequelize.DATE,
-        allowNull: false,
-        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
-      }
     });
   },
 
