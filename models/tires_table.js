@@ -12,7 +12,6 @@ module.exports = (sequelize, DataTypes) => {
             // define association here
         }
     }
-
     Tires_Table.init({
         tire_id: {
             type: DataTypes.INTEGER,
