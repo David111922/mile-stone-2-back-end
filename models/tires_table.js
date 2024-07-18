@@ -40,7 +40,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false,
     },
-    image: {
+    tread_pattern_image: {
         type: DataTypes.STRING,
         allowNull: false,
     },
