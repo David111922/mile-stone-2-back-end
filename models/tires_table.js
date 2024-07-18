@@ -2,21 +2,17 @@
 const { Model } = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
-    class Tires_Table extends Model {
-        /**
-         * Helper method for defining associations.
-         * This method is not a part of Sequelize lifecycle.
-         * The `models/index` file will call this method automatically.
-         */
+    class Tire extends Model {
         static associate(models) {
             // define association here
         }
     }
-    Tires_Table.init({
+    Tire.init({
         tire_id: {
             type: DataTypes.INTEGER,
             primaryKey: true,
             autoIncrement: true,
+            allowNull: false,
         },
         brand_name: {
             type: DataTypes.STRING,
@@ -40,9 +36,9 @@ module.exports = (sequelize, DataTypes) => {
         },
     }, {
         sequelize,
-        modelName: 'Tires_Table',
-        tableName: 'tires-table',
+        modelName: 'Tire',
+        tableName: 'tires_table', 
         timestamps: false,
-    })
-    return Tires_Table;
+    });
+    return Tire;
 };
