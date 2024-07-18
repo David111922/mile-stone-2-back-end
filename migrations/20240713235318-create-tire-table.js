@@ -21,7 +21,11 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      tread_pattern_image: {
+      tread_pattern: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      image: {
         type: Sequelize.STRING,
         allowNull: false,
       },
