@@ -1,27 +1,43 @@
-'use strict';
-const { Sequelize, DataTypes } = require('sequelize');
-const sequelize = new Sequelize('tire_shop', 'postgres', 'Papasseit@2762', {
-  host: 'localhost',
-  dialect: 'postgres',
+const fs = require('fs');
+const path = require('path');
+const Sequelize = require('sequelize');
+const process = require('process');
+const basename = path.basename(__filename);
+const env = process.env.NODE_ENV || 'development';
+const config = require(__dirname + '/../config/config.json')[env];
+const db = {};
+
+// console.log('at index.js',db)
+
+let sequelize;
+if (config.use_env_variable) {
+  sequelize = new Sequelize(process.env[config.use_env_variable], config);
+} else {
+  sequelize = new Sequelize(config.database, config.username, config.password, config);
+}
+
+fs
+  .readdirSync(__dirname)
+  .filter(file => {
+    return (
+      file.indexOf('.') !== 0 &&
+      file !== basename &&
+      file.slice(-3) === '.js' &&
+      file.indexOf('.test.js') === -1
+    );
+  })
+  .forEach(file => {
+    console.log(`Requiring model file: ${file}`);
+    const model = require(path.join(__dirname, file))(sequelize, Sequelize.DataTypes);
+    db[model.name] = model;
+  });
+
+Object.keys(db).forEach(modelName => {
+  if (db[modelName].associate) {
+    db[modelName].associate(db);
+  }
 });
 
-const TireShop = require('./tireshop')(sequelize, DataTypes);
-const TireSize = require('./tiresize')(sequelize, DataTypes);
-const TreadPattern = require('./treadpattern')(sequelize, DataTypes);
-const Brand = require('./brand')(sequelize, DataTypes);
+db.sequelize = sequelize;
 
-// Set up associations
-TireShop.associate({ TireSize, TreadPattern, Brand });
-TireSize.associate({ TireShop });
-TreadPattern.associate({ TireShop });
-Brand.associate({ TireShop });
-
-module.exports = {
-  sequelize,
-  TireShop,
-  TireSize,
-  TreadPattern,
-  Brand,
-};
-
-
+module.exports = db;
