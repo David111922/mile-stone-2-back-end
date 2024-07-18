@@ -22,21 +22,18 @@ tires.get('/', async (req, res) => {
 
 
 // CREATE A NEW Tire - POST
-// tires.post('/', async (req, res) => {
-//   try {
-//     const createdTire = await Tire.createAll({
-//       brand: req.body.brand,
-//       model: req.body.model,
-//       size: req.body.size,
-//       price: req.body.price
-//     })
-//     res.status(200).json(createdTire)
+tires.post('/', async (req, res) => {
+  try {
+    const newTire = await Tire.create(req.body)
+    res.status(201).json({
+      message: 'Insert a new Tire!',
+      data: newTire
+    })
 
-//   } catch (error) {
-//     res.status(500).json(error)
-//   }
-// })
-
+  } catch (error) {
+    res.status(422).json(error)
+  }
+})
 
 // // UPDATE A Tire - PUT
 // tires.put('/:id', async (req, res) => {
@@ -51,7 +48,6 @@ tires.get('/', async (req, res) => {
 //   }
 // }
 // )
-
 
 // // DELETE A Tire
 // tires.delete('/:id', async (req, res) => {
