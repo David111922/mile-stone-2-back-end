@@ -9,6 +9,7 @@
 /coverage
 
 # production
+config.json
 /build
 
 # misc
