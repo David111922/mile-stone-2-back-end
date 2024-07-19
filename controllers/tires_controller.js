@@ -35,16 +35,12 @@ tires.get('/:id', async (req, res) => {
 // CREATE A NEW Tire - POST
 tires.post('/', async (req, res) => {
   try {
-    const createdTire = await Tire.create({
-      brand: req.body.brand,
-      model: req.body.model,
-      size: req.body.size,
-      price: req.body.price
-    })
+    const newTire = await Tire.create(req.body)
     res.status(201).json({
       message: 'Insert a new Tire!',
-      data: createdTire
+      data: newTire
     })
+
   } catch (error) {
     res.status(422).json(error)
   }
