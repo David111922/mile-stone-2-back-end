@@ -3,7 +3,6 @@ const { Op } = require('sequelize')
 const db = require('../models')
 const { Tire } = db
 
-
 // SHOW ALL Tires - GET
 tires.get('/', async (req, res) => {
   try {
@@ -17,12 +16,11 @@ tires.get('/', async (req, res) => {
   }
 })
 
-
-
+// SHOW A SINGLE Tire BY ID - GET
 tires.get('/:id', async (req, res) => {
   try {
-      const foundtire = await Tire.findOne({
-          where: { band_id: req.params.id }
+      const foundTire = await Tire.findOne({
+          where: { tire_id: req.params.id }
       });
       if (foundTire) {
           res.status(200).json(foundTire);
@@ -34,11 +32,6 @@ tires.get('/:id', async (req, res) => {
   }
 });
 
-
-
-
-
-
 // CREATE A NEW Tire - POST
 tires.post('/', async (req, res) => {
   try {
@@ -48,13 +41,14 @@ tires.post('/', async (req, res) => {
       size: req.body.size,
       price: req.body.price
     })
-    res.status(200).json(createdTire)
-
+    res.status(201).json({
+      message: 'Insert a new Tire!',
+      data: createdTire
+    })
   } catch (error) {
-    res.status(500).json(error)
+    res.status(422).json(error)
   }
 })
-
 
 // UPDATE A Tire - PUT
 tires.put('/:id', async (req, res) => {
@@ -67,9 +61,7 @@ tires.put('/:id', async (req, res) => {
   } catch (error) {
     res.status(500).json(error)
   }
-}
-)
-
+})
 
 // DELETE A Tire
 tires.delete('/:id', async (req, res) => {
@@ -81,6 +73,6 @@ tires.delete('/:id', async (req, res) => {
   } catch (error) {
     res.status(500).json(error)
   }
-}
-)
+})
+
 module.exports = tires
