@@ -6,7 +6,9 @@ const { Tire } = db
 // SHOW ALL Tires - GET
 tires.get('/', async (req, res) => {
   try {
-    const foundTires = await Tire.findAll()
+    const foundTires = await Tire.findAll({
+      order: [['tire_id', 'ASC']]
+    })
     console.log(foundTires)
     res.status(200).json(foundTires)
   } catch (error) {
