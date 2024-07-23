@@ -3,34 +3,34 @@ const { Op } = require("sequelize");
 const db = require("../models");
 const { Tire } = db;
 
-// // serve static front end in production mode
-// if (process.env.NODE_ENV === "production") {
-//   app.use(express.static(path.join(__dirname, "public", "build")));
-// }
 
 //************ROUTES**********
 
-// //create newTire
+//create newTire
 tires.post("/", async (req, res) => {
   try {
-    const newTire = await Tire.create({size})
-    console.log(newTire.toJson())
+    const newTire = await Tire.create(req.body);
+
+    res.status(201).json({
+      message: 'Insert a new Tire!',
+      data: newTire
+    })
   } catch (error) {
-    console.error('Error inserting tire:', error);
+    res.status(422).json(error)
   }
 });
-// tires.get("/:id", async (req, res) => {
-//   try {
-//     const { id } = req.params;
-//     const toDo = await Tire.query(
-//       "SELECT * FROM todo WHERE todo_id = $1",
-//       [id]
-//     );
-//     res.json(toDo.rows[0]);
-//   } catch (error) {
-//     console.log(error.message);
-//   }
-// });
+
+// SELECT ONE - GET
+bands.get('/:id', async (req, res) => {
+  try {
+      const foundBand = await Band.findOne({
+          where: { band_id: req.params.id }
+      })
+      res.status(200).json(foundBand)
+  } catch (error) {
+      res.status(500).json(error)
+  }
+})
 
 // SHOW ALL Tires - GET
 tires.get('/', async (req, res) => {

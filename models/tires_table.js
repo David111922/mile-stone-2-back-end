@@ -24,7 +24,7 @@ module.exports = (sequelize, DataTypes) => {
         },
         size: {
             type: DataTypes.STRING,
-            // allowNull: false,
+            allowNull: false,
         },
         tread_pattern: {
             type: DataTypes.STRING,
@@ -37,7 +37,7 @@ module.exports = (sequelize, DataTypes) => {
     }, {
         sequelize,
         modelName: 'Tire',
-        tableName: 'tires_table', 
+        tableName: 'tires_table',
         timestamps: false,
     });
     return Tire;

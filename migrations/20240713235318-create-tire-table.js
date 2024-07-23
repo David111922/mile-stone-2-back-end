@@ -20,7 +20,7 @@ module.exports = {
       },
       size: {
         type: Sequelize.STRING,
-        // allowNull: false,
+        allowNull: false,
       },
       tread_pattern: {
         type: Sequelize.STRING,
