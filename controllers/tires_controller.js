@@ -1,7 +1,36 @@
-const tires = require('express').Router()
-const { Op } = require('sequelize')
-const db = require('../models')
-const { Tire } = db
+const tires = require("express").Router();
+const { Op } = require("sequelize");
+const db = require("../models");
+const { Tire } = db;
+
+// // serve static front end in production mode
+// if (process.env.NODE_ENV === "production") {
+//   app.use(express.static(path.join(__dirname, "public", "build")));
+// }
+
+//************ROUTES**********
+
+// //create newTire
+tires.post("/", async (req, res) => {
+  try {
+    const newTire = await Tire.create({size})
+    console.log(newTire.toJson())
+  } catch (error) {
+    console.error('Error inserting tire:', error);
+  }
+});
+// tires.get("/:id", async (req, res) => {
+//   try {
+//     const { id } = req.params;
+//     const toDo = await Tire.query(
+//       "SELECT * FROM todo WHERE todo_id = $1",
+//       [id]
+//     );
+//     res.json(toDo.rows[0]);
+//   } catch (error) {
+//     console.log(error.message);
+//   }
+// });
 
 // SHOW ALL Tires - GET
 tires.get('/', async (req, res) => {
@@ -18,19 +47,15 @@ tires.get('/', async (req, res) => {
   }
 })
 
-
-
-// CREATE A NEW Tire - POST
-tires.post('/', async (req, res) => {
+// DELETE A Tire
+tires.delete('/:id', async (req, res) => {
   try {
-    const newTire = await Tire.create(req.body)
-    res.status(201).json({
-      message: 'Insert a new Tire!',
-      data: newTire
+    await Tire.destroy({
+      where: { tire_id: req.params.id }
     })
-
+    res.status(200).json({ message: 'Tire deleted' })
   } catch (error) {
-    res.status(422).json(error)
+    res.status(500).json(error)
   }
 })
 
@@ -47,16 +72,4 @@ tires.put('/:id', async (req, res) => {
   }
 })
 
-// DELETE A Tire
-tires.delete('/:id', async (req, res) => {
-  try {
-    await Tire.destroy({
-      where: { tire_id: req.params.id }
-    })
-    res.status(200).json({ message: 'Tire deleted' })
-  } catch (error) {
-    res.status(500).json(error)
-  }
-})
-
-module.exports = tires
+module.exports = tires;
