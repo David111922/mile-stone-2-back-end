@@ -16,23 +16,23 @@ module.exports = (sequelize, DataTypes) => {
         },
         brand_name: {
             type: DataTypes.STRING,
-            allowNull: false,
+            // allowNull: false,
         },
         price: {
             type: DataTypes.INTEGER,
-            allowNull: false,
+            // allowNull: false,
         },
         size: {
             type: DataTypes.STRING,
-            allowNull: false,
+            // allowNull: false,
         },
         tread_pattern: {
             type: DataTypes.STRING,
-            allowNull: false,
+            // allowNull: false,
         },
         image: {
             type: DataTypes.STRING,
-            allowNull: false,
+            // allowNull: false,
         },
     }, {
         sequelize,
