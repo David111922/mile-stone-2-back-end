@@ -18,21 +18,7 @@ tires.get('/', async (req, res) => {
   }
 })
 
-// SHOW A SINGLE Tire BY ID - GET
-// tires.get('/:id', async (req, res) => {
-//   try {
-//       const foundTire = await Tire.findOne({
-//           where: { tire_id: req.params.id }
-//       });
-//       if (foundTire) {
-//           res.status(200).json(foundTire);
-//       } else {
-//           res.status(404).json({ message: 'Tire not found' });
-//       }
-//   } catch (error) {
-//       res.status(500).json(error);
-//   }
-// });
+
 
 // CREATE A NEW Tire - POST
 tires.post('/', async (req, res) => {
