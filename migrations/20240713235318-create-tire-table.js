@@ -12,11 +12,11 @@ module.exports = {
       },
       brand_name: {
         type: Sequelize.STRING,
-        allowNull: false,
+        // allowNull: false,
       },
       price: {
         type: Sequelize.INTEGER,
-        allowNull: false,
+        // allowNull: false,
       },
       size: {
         type: Sequelize.STRING,
@@ -24,11 +24,11 @@ module.exports = {
       },
       tread_pattern: {
         type: Sequelize.STRING,
-        allowNull: false,
+        // allowNull: false,
       },
       image: {
         type: Sequelize.STRING,
-        allowNull: false,
+        // allowNull: false,
       },
     });
   },
