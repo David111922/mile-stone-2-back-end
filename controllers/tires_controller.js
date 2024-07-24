@@ -21,12 +21,12 @@ tires.post("/", async (req, res) => {
 });
 
 // SELECT ONE - GET
-bands.get('/:id', async (req, res) => {
+tires.get('/:id', async (req, res) => {
   try {
-      const foundBand = await Band.findOne({
-          where: { band_id: req.params.id }
+      const foundTire = await Tire.findOne({
+          where: { tire_id: req.params.id }
       })
-      res.status(200).json(foundBand)
+      res.status(200).json(foundTire)
   } catch (error) {
       res.status(500).json(error)
   }
