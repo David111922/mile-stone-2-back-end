@@ -3,9 +3,6 @@ const { Op } = require("sequelize");
 const db = require("../models");
 const { Tire } = db;
 
-
-//************ROUTES**********
-
 //create newTire
 tires.post("/", async (req, res) => {
   try {
