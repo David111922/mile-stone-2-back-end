@@ -32,3 +32,33 @@ const port = process.env.PORT || 4000;
 app.listen(port, () => {
   console.log(`🎣 Fishing' on port: ${port}`);
 });
+
+
+
+
+// Saving some code    *****
+
+// Config....
+// {
+//   "development": {
+//     "username": "postgres",
+//     "password": "elsi2811",
+//     "database": "MST-2",
+//     "host": "127.0.0.1",
+//     "dialect": "postgres"
+//   },
+//   "test": {
+//     "username": "postgres",
+//     "password": "elsi2811",
+//     "database": "database_test",
+//     "host": "127.0.0.1",
+//     "dialect": "postgres"
+//   },
+//   "production": {
+//     "username": "postgres",
+//     "password": "elsi2811",
+//     "database": "database_production",
+//     "host": "127.0.0.1",
+//     "dialect": "postgres"
+//   }
+// }
