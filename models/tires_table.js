@@ -16,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
         },
         brand_name: {
             type: DataTypes.STRING,
-            // allowNull: false,
+            allowNull: false,
         },
         price: {
             type: DataTypes.INTEGER,
@@ -28,9 +28,13 @@ module.exports = (sequelize, DataTypes) => {
         },
         tread_pattern: {
             type: DataTypes.STRING,
-            // allowNull: false,
+            allowNull: false,
         },
         image: {
+            type: DataTypes.STRING,
+            // allowNull: false,
+        },
+        stock: {
             type: DataTypes.STRING,
             // allowNull: false,
         },

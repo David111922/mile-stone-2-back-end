@@ -2,19 +2,28 @@ const express = require('express');
 const app = express();
 const cors = require('cors');
 const { Sequelize } = require('sequelize');
+const path = require("path");
 
-// Allow CORS too the client | Frontend.
-const corsOptions = {
-  origin: 'http://localhost:3000',
-  optionsSuccessStatus: 200
-};
-app.use(cors(corsOptions));
+// // Allow CORS too the client | Frontend.
+// const corsOptions = {
+//   origin: 'https://backend-production-1cdd.up.railway.app/',
+//   optionsSuccessStatus: 200
+// };
+// app.use(cors(corsOptions));
+app.use(cors());
 
 // CONFIGURATION / MIDDLEWARE
 require('dotenv').config();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
+// Serve static files from the public directory
+app.use(express.static(path.join(__dirname, "public")))
+
+// !setup for running app from backend build folder
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "public", "build")));
+}
 
 // ROOT
 app.get('/api', (req, res) => {
